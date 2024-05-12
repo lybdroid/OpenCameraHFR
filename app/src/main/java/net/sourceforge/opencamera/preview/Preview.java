@@ -3124,12 +3124,6 @@ public class Preview implements SurfaceHolder.Callback, TextureView.SurfaceTextu
                 Log.d(TAG, "video_high_speed?: " + video_high_speed);
         }
 
-        if( is_video && video_high_speed && supports_iso_range && is_manual_iso ) {
-            if( MyDebug.LOG )
-                Log.d(TAG, "manual mode not supported for video_high_speed");
-            camera_controller.setManualISO(false, 0);
-            is_manual_iso = false;
-        }
 
         {
             if( MyDebug.LOG ) {

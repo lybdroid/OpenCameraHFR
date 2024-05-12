@@ -5089,15 +5089,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean supportsExposureButton() {
-        if( preview.isVideoHighSpeed() ) {
-            // manual ISO/exposure not supported for high speed video mode
-            // it's safer not to allow opening the panel at all (otherwise the user could open it, and switch to manual)
-            return false;
-        }
-        if( applicationInterface.isCameraExtensionPref() ) {
-            // nothing in this UI (exposure compensation, manual ISO/exposure, manual white balance) is supported for camera extensions
-            return false;
-        }
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String iso_value = sharedPreferences.getString(PreferenceKeys.ISOPreferenceKey, CameraController.ISO_DEFAULT);
         boolean manual_iso = !iso_value.equals(CameraController.ISO_DEFAULT);
