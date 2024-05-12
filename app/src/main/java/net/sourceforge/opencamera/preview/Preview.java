@@ -3481,7 +3481,6 @@ public class Preview implements SurfaceHolder.Callback, TextureView.SurfaceTextu
                 cam_profile = CamcorderProfile.get(cameraId, CamcorderProfile.QUALITY_HIGH);
                 cam_profile.videoFrameWidth = 3840;
                 cam_profile.videoFrameHeight = 2160;
-                cam_profile.videoBitRate = (int)(cam_profile.videoBitRate*2.8); // need a higher bitrate for the better quality - this is roughly based on the bitrate used by an S5's native camera app at 4K (47.6 Mbps, compared to 16.9 Mbps which is what's returned by the QUALITY_HIGH profile)
             }
             else if( this.video_quality_handler.getCurrentVideoQualityIndex() != -1 ) {
                 cam_profile = getCamcorderProfile(this.video_quality_handler.getCurrentVideoQuality());
@@ -3545,12 +3544,6 @@ public class Preview implements SurfaceHolder.Callback, TextureView.SurfaceTextu
                 if( MyDebug.LOG )
                     Log.d(TAG, "bitrate invalid format, can't parse to int: " + bitrate_value);
             }
-        }
-        final int min_high_speed_bitrate_c = 4*14000000;
-        if( video_high_speed && video_profile.videoBitRate < min_high_speed_bitrate_c ) {
-            video_profile.videoBitRate = min_high_speed_bitrate_c;
-            if( MyDebug.LOG )
-                Log.d(TAG, "set minimum bitrate for high speed: " + video_profile.videoBitRate);
         }
 
         if( has_capture_rate_factor ) {
