@@ -307,6 +307,8 @@ public class CameraController2 extends CameraController {
      */
     private final static long max_preview_exposure_time_c = 1000000000L/5;
 
+    public static int fps = 30;
+
     private void resetCaptureResultInfo() {
         capture_result_is_ae_scanning = false;
         capture_result_ae = null;
@@ -5562,6 +5564,11 @@ public class CameraController2 extends CameraController {
     }
 
     private void setRepeatingRequest() throws CameraAccessException {
+        if (is_video_high_speed)
+        {
+            Range<Integer> fpsRange = new Range<>(fps, fps);
+            previewBuilder.set(CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE, fpsRange);
+        }
         setRepeatingRequest(previewBuilder.build());
     }
 

@@ -7562,6 +7562,7 @@ public class Preview implements SurfaceHolder.Callback, TextureView.SurfaceTextu
         if( !fps_value.equals("default") && supports_video_high_speed ) {
             try {
                 int fps = Integer.parseInt(fps_value);
+                CameraController2.fps = fps;
                 if( MyDebug.LOG )
                     Log.d(TAG, "fps: " + fps);
                 // need to check both, e.g., 30fps on Nokia 8 is in fps ranges of both normal and high speed video sizes
