@@ -2849,7 +2849,7 @@ public class MainActivity extends AppCompatActivity {
         // set up supported fps values
         if( preview.usingCamera2API() ) {
             // with Camera2, we know what frame rates are supported
-            int [] candidate_fps = {15, 24, 25, 30, 60, 96, 100, 120, 240};
+            int [] candidate_fps = {15, 24, 25, 30, 60, 96, 100, 120, 240, 480, 960, 1920};
             List<Integer> video_fps = new ArrayList<>();
             List<Boolean> video_fps_high_speed = new ArrayList<>();
             for(int fps : candidate_fps) {
